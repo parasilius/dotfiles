@@ -73,7 +73,10 @@ hdd-sync() {
         rsync -arv --delete $HOME/Downloads/ Downloads
         rsync -arv --delete $HOME/Documents/ Documents
         rsync -arv --delete $HOME/Music/ Music
-        rsync -arv $HOME/Videos/ Videos
+        rsync -av --exclude='*/' $HOME/Videos/ Videos/
+        for d in $HOME/Videos/*/(N/); do
+            rsync -av --delete "$d" "Videos/${d:t}/"
+        done
         rsync -arv --delete $HOME/Pictures/ Pictures
         rsync -arv --delete $HOME/Zotero/ Zotero
         rsync -arv $HOME/KeePass/ KeePass
