@@ -68,18 +68,18 @@ hdd-sync() {
     read response
     if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
     then
-        rsync -arv --exclude .git/ --delete $HOME/Academia/ Academia
-        rsync -arv --delete $HOME/Calibre\ Library/ Calibre\ Library
-        rsync -arv --delete $HOME/Downloads/ Downloads
-        rsync -arv --delete $HOME/Documents/ Documents
-        rsync -arv --delete $HOME/Music/ Music
+        rsync -av --exclude .git/ --delete $HOME/Academia/ Academia
+        rsync -av --delete $HOME/Calibre\ Library/ Calibre\ Library
+        rsync -av --delete $HOME/Downloads/ Downloads
+        rsync -av --delete $HOME/Documents/ Documents
+        rsync -av --delete $HOME/Music/ Music
         rsync -av --exclude='*/' $HOME/Videos/ Videos/
         for d in $HOME/Videos/*/(N/); do
             rsync -av --delete "$d" "Videos/${d:t}/"
         done
-        rsync -arv --delete $HOME/Pictures/ Pictures
-        rsync -arv --delete $HOME/Zotero/ Zotero
-        rsync -arv $HOME/KeePass/ KeePass
+        rsync -av --delete $HOME/Pictures/ Pictures
+        rsync -av --delete $HOME/Zotero/ Zotero
+        rsync -av $HOME/KeePass/ KeePass
 
         # GitHub Backup
 
