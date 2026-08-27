@@ -77,7 +77,7 @@ hdd-sync() {
         for d in $HOME/Videos/*/(N/); do
             rsync -av --delete "$d" "Videos/${d:t}/"
         done
-        rsync -av --delete $HOME/Pictures/ Pictures
+        rsync -av --delete --filter='protect /2[0-9][0-9][0-9]/' $HOME/Pictures/ Pictures/
         rsync -av --delete $HOME/Zotero/ Zotero
         rsync -av $HOME/KeePass/ KeePass
 
